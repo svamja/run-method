@@ -1,0 +1,23 @@
+{
+  "name": "run-method",
+  "version": "1.0.0",
+  "description": "Run any function from any NodeJS module and pass arguments",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svamja/run-method.git"
+  },
+  "author": "Sanjay Vamja",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svamja/run-method/issues"
+  },
+  "homepage": "https://github.com/svamja/run-method#readme",
+  "dependencies": {
+    "commander": "^7.0.0"
+  }
+}

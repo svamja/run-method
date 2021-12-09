@@ -1,6 +1,6 @@
 # run-method
 
-Run any function from any NodeJS module and pass arguments
+Run any function from any NodeJS module and pass string arguments
 
     npx run-method SampleModule say_hello
 
@@ -15,21 +15,48 @@ This will add run-method as dependency in the project.
 
     npx run-method <module_name> <function_name> [ <arg> .. ]
 
-## Complete Example
+## Examples
 
-    npx run-method --debug maths factorial 5
+Display the help:
 
-Optionally, include the run-method in your code to control various levels of output:
+    npx run-method --help
+
+
+Run the `random` function from `maths.js` file in current directory:
+
+    npx run-method maths random
+
+
+Run the `random` function from `maths.js` file in `lib` directory:
+
+    npx run-method lib/maths random
+
+
+Run the `multiply` function from `maths.js` file and pass `'5'` and `'7'` as string arguments.
+
+    npx run-method maths multiply 5 7
+
+
+Pass the argument "Hello World!" as single string using url encoding:
+
+    npx run-method --encoded some_module some_function 'Hello%20World!'
+
+
+Print only the `info()` and `output()` messages and suppress `debug()` messages, from the following code:
+
+    npx run-method --info maths factorial 5
+
+Code:
 
     # maths.js
     const RunMethod = require('run-method');
     const maths = {
         factorial(n) {
             n = parseInt(n);
-            RunMethod.debug('input = ', n);
+            RunMethod.debug('input', n);
             let m = 1;
-            for(let i = 1; i <= n; i++) m*= i;
-            RunMethod.debug('output = ', m);
+            for(let i = 1; i <= n; i++) m *= i;
+            RunMethod.info('output', m);
             return m;
         }
     }
@@ -41,7 +68,4 @@ Different levels of output functions:
     RunMethod.info();   // Level 2 = informational
     RunMethod.debug();  // Level 3 = debug
 
-Also, see help
-
-    npx run-method --help
 
